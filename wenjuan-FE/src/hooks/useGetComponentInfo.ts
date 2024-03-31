@@ -1,0 +1,21 @@
+import { useSelector } from 'react-redux'
+import { StateType } from '../store'
+import { ComponentsStateType } from '../store/componentsReducer'
+const useGetComponentInfo = () => {
+  const components = useSelector<StateType>(
+    state => state.components.present
+  ) as ComponentsStateType
+
+  const { componentList = [], selectedId = '', copiedComponents } = components
+
+  const selectedComponent = componentList.find(c => c.id === selectedId)
+
+  return {
+    componentList,
+    selectedId,
+    selectedComponent,
+    copiedComponents,
+  }
+}
+
+export default useGetComponentInfo

@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f0f2f5;
+}
+
+.content-wrapper {
+  flex: auto;
+  height: 708.9px;
+  padding: 12px 0;
+}
+
+.content {
+  margin: 0 12px;
+  // height: 696.9px;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+
+  .left {
+    width: 300px;
+   // height: 696.9px;
+    padding: 0 12px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px #0000001f;
+
+    ::-webkit-scrollbar {
+      width: 7px;
+      // background-color: #f5f5f5;
+      background-color: #fff;
+    }
+
+    /* 修改滚动条滑块颜色 */
+    ::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      // background-color: #ccc;
+      background-color: #fff;
+    }
+
+    /* 修改滚动条滑块在hover状态下的颜色 */
+    /* ::-webkit-scrollbar-thumb:hover {
+      background-color: #ccc;
+    } */
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    .canvas-wrapper {
+      width: 400px;
+      //height: 696.9px;
+      background-color: #fff;
+      overflow: auto;
+      box-shadow: 0 2px 10px #0000001f;
+    }
+
+    ::-webkit-scrollbar {
+      width: 7px;
+      background-color: #f5f5f5;
+    }
+
+    /* 修改滚动条滑块颜色 */
+    ::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: #ccc;
+    }
+
+    /* 修改滚动条滑块在hover状态下的颜色 */
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #ccc;
+    }
+  }
+
+  .right {
+    width: 300px;
+    background-color: #fff;
+    padding: 0 12px;
+    box-shadow: 0 2px 10px #0000001f;
+
+  }
+}
