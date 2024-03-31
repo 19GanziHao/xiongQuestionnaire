@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzh.mapper.ComponentMapper">
+
+
+    <insert id="insert" keyProperty="component.id" useGeneratedKeys="true">
+        insert into
+            component(type, title, is_hidden, is_locked, question_info_id)
+        VALUE
+            (#{component.type}, #{component.title}, #{component.isHidden}, #{component.isLocked}, #{questionInfoId})
+    </insert>
+
+</mapper>

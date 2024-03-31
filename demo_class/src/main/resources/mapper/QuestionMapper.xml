@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzh.mapper.QuestionMapper">
+    <insert id="insertQuestion" useGeneratedKeys="true" keyProperty="id">
+        insert into
+            question(title, user_id)
+        VALUE
+            (null, #{userId})
+    </insert>
+
+    <select id="pageQuery" resultType="com.gzh.vo.QuestionVO">
+        select
+               id, title, is_published, is_star, answer_count, create_at, is_deleted
+        from
+             question
+        <where>
+            <if test="questionPageQueryDTO.keyword != null">
+                and title like concat('%', #{questionPageQueryDTO.keyword}, '%')
+            </if>
+            <if test="questionPageQueryDTO.isStar != null">
+                and is_star = #{questionPageQueryDTO.isStar}
+            </if>
+            <if test="questionPageQueryDTO.isDeleted != null">
+                and is_deleted = #{questionPageQueryDTO.isDeleted}
+            </if>
+                and user_id = #{userId}
+        </where>
+        order by create_at desc
+    </select>
+
+    <update id="updateQuestionInfo">
+        update question_info
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="desc != null">
+                `desc` = #{desc},
+            </if>
+            <if test="js != null">
+                js = #{js},
+            </if>
+            <if test="css != null">
+                css = #{css},
+            </if>
+            <if test="isPublished != null">
+                is_published = #{isPublished},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+        </set>
+        where question_id = #{questionId}
+    </update>
+    <update id="updateQuestion">
+        update question
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="isPublished != null">
+                is_published = #{isPublished},
+            </if>
+            <if test="isStar != null">
+                is_star = #{isStar},
+            </if>
+            <if test="answerCount != null">
+                answer_count = #{answerCount},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateQuestionStatus">
+        update
+            question
+        <set>
+            <if test="isPublished != null">
+                is_published = #{isPublished},
+            </if>
+            <if test="isStar != null">
+                is_star = #{isStar},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzh.mapper.PropsMapper">
+
+    <insert id="insertInfo" useGeneratedKeys="true" keyProperty="props.id">
+        insert into
+            info_component_props(title, `desc`, component_id, question_info_id)
+        value
+            (#{props.title}, #{props.desc}, #{componentId}, #{questionInfoId})
+    </insert>
+
+    <insert id="insertTitle" useGeneratedKeys="true" keyProperty="props.id">
+        insert into
+            title_component_props(text, level, is_center, component_id, question_info_id)
+        value
+            (#{props.text}, #{props.level},#{props.isCenter}, #{componentId}, #{questionInfoId})
+    </insert>
+
+    <insert id="insertInputAndTextarea" useGeneratedKeys="true" keyProperty="props.id">
+        insert into
+            input_and_textarea_component_props(title, placeholder, component_id, question_info_id)
+        value
+            (#{props.title}, #{props.placeholder}, #{componentId}, #{questionInfoId})
+    </insert>
+
+    <insert id="insertRadioAndCheckbox" useGeneratedKeys="true" keyProperty="props.id">
+        insert into
+            radio_and_checkbox_component_props(title, is_vertical, component_id, question_info_id)
+        value
+            (#{props.title}, #{props.isVertical}, #{componentId}, #{questionInfoId})
+    </insert>
+
+    <insert id="insertParagraph" useGeneratedKeys="true" keyProperty="props.id">
+        insert into
+            paragraph_component_props(text, is_center, component_id, question_info_id)
+        value
+            (#{props.text}, #{props.isCenter}, #{componentId}, #{questionInfoId})
+    </insert>
+</mapper>

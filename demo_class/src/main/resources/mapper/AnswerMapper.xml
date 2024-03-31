@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gzh.mapper.AnswerMapper">
+
+
+    <insert id="saveAnswer">
+        insert into
+            answer(component_id, answer_content, identification, question_id)
+        values
+            <foreach collection="answerList" item="item" separator=",">
+                (#{item.componentId}, #{item.value}, #{item.identification}, #{questionId})
+            </foreach>
+    </insert>
+
+
+    <select id="pageQuery" resultType="com.gzh.vo.AnswerVO">
+        select
+            component_id as id, answer_content, identification
+        from answer
+        where
+              component_id in
+            <foreach collection="componentList" item="component" separator="," close=")" open="(">
+                #{component.id}
+            </foreach>
+
+    </select>
+</mapper>
